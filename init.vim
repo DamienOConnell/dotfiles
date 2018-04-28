@@ -182,8 +182,8 @@ endif
 "
 " indents and tab
 "
-command! -bar -count=4 HardTab set tabstop=<count> softtabstop=0 shiftwidth=0 noexpandtab
-command! -bar -count=4 SoftTab set tabstop=8 softtabstop=<count> shiftwidth=<count> expandtab
+command! -bar -count=2 HardTab set tabstop=<count> softtabstop=0 shiftwidth=0 expandtab
+command! -bar -count=2 SoftTab set tabstop=4 softtabstop=<count> shiftwidth=<count> noexpandtab
 HardTab
 "
 " END OF DANIEL'S FILE

@@ -1,7 +1,7 @@
 # vim:fdm=marker
 # environmental                                             {{{1
 
-# If not interactive, don't do anything
+# if not running interactively, don't do anything
 [[ "$-" != *i* ]] && return
 
 # locale                                                    {{{1
@@ -41,21 +41,23 @@ export HISTIGNORE=$'[ \t]*:&:[fb]g:exit:ls' # Ignore the ls command as well
 export PROMPT_COMMAND="history -a"
 
 TERM=xterm-256color; export TERM
+
 set -o vi
+bind '"jj":"\e"'
+
+
 # functions                                                 {{{1
-# function settitle                                         {{{2
+# settitle function                                         {{{2
 settitle ()
 {
   echo -ne "\e]2;$@\a\e]1;$@\a";
 }
-
 
 # ssh-agent for ssh kex
 eval $(ssh-agent)
 
 
 # aliases                                                   {{{1
-
 
 alias cp='cp -i'
 alias df='df -h'
@@ -94,7 +96,7 @@ case `uname` in
     alias pstree='pstree -g 2'
     alias vdir='ls -lFG'
 
-    export PATH=/Users/damien/Library/Python/3.7/bin:
+    export PATH=/Users/damien/Library/Python/3.7/bin:$PATH
     export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
     export PATH=/Users/damien/Dropbox/bin/mac:$PATH
     export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
@@ -128,15 +130,13 @@ if [[ -o login ]]; then
   neofetch
 fi
 
-
-export PATH=$PATH:/usr/bin:/sbin
-
+# export PATH=$PATH:/usr/bin:/sbin
 
 # python {{{1
 
-if [[ -r "/Users/damien/Dropbox/repositories/python/source_py3_osx_env" ]]; then
-  source /Users/damien/Dropbox/repositories/python/source_py3_osx_env
-fi
+# if [[ -r "/Users/damien/Dropbox/repositories/python/source_py3_osx_env" ]]; then
+#   source /Users/damien/Dropbox/repositories/python/source_py3_osx_env
+# fi
 export PYTHONSTARTUP="$(python -m jedi repl)"
 
-# modified 1551605782  3-Mar-2019 08:36:22 PM
+# modified 1557312439  8-May-2019 08:47:19 PM
